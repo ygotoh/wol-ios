@@ -5,9 +5,13 @@ proc send_wol {mac_str} {
 
      set usock [udp_open]
      fconfigure $usock -translation binary -remote [list 255.255.255.255 9] -broadcast 1
-     puts "sending WOL packet to $mac_str ..."
      puts $usock $body
      flush $usock ; close $usock
 }
 
-send_wol $argv
+if { $argv0 != "tclsh" } then {
+    foreach mac $argv {
+        puts "sending WOL packet to $mac ..."
+        send_wol $mac
+    }
+}
