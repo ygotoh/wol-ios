@@ -13,7 +13,7 @@ use as CLI command.
 ```
 Router# configure terminal
 Router(config)# alias exec wol-somehost tclsh wol.tcl aa.bb.cc.dd.ee.ff
-Router(config)# exit
+Router(config)# tclquit
 Router# wol-somehost
 ```
 
